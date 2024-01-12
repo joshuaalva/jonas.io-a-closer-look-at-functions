@@ -54,3 +54,8 @@
 // JS does not have passing by reference only passing by value
 
 // <----- First-Class and Higher Order Functions ----->
+
+// first-class functions
+// jS treats functions as first-class citizens
+// this means that function are simply values
+// functions are just another "type" of object
