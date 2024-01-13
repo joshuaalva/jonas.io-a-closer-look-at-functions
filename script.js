@@ -116,3 +116,22 @@ document.body.addEventListener(`click`, high5);
 // document.body.addEventListener(`click`, fire);
 
 // <----- Functions Returning Functions ----->
+
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+
+// greeterHey becomes the function inside of the greet function
+const greeterHey = greet(`Hello`);
+greeterHey(`Joshua`);
+greeterHey(`Steven`);
+
+greet(`Hello`)(`Mike`);
+
+// arrow funciton doing the same thing
+// arrow function returning another arrow function
+const arrowHey = greeting => name => console.log(`${greeting} ${name}`);
+
+// <----- The Call and Apply Methods ----->
