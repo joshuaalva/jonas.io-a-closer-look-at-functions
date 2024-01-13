@@ -55,7 +55,64 @@
 
 // <----- First-Class and Higher Order Functions ----->
 
-// first-class functions
+// First-Class Functions -->
 // jS treats functions as first-class citizens
 // this means that function are simply values
 // functions are just another "type" of object
+
+// store functions in variables or propeties
+// pass functions as arguement to other functions
+// return functions FROM other functions
+// Call methods on function (ex: .bind)
+
+// Higher Order Functions -->
+// A function that recieves another function as an argument, that returns a new function or both
+// This is only possible because of first-class functions
+
+// There are no first-class functions in practice only in theory. There are higher-order functions in practice
+
+// <----- Functions Accepting Callback Functions ----->
+// Ex: Higher Order Functions -->
+const oneWord = function (str) {
+  return str.replace(/ /g, ``).toLowerCase();
+  // The "g" after the regular expression is an option or flag that performs a global search, looking in the whole string and returning all matches
+};
+
+const upperFirstWord = function (str) {
+  const [first, ...others] = str.split(` `);
+  return [first.toUpperCase(), ...others].join(` `);
+};
+
+// because it takes in a a function >> it becomes a higher order function
+const transformer = function (str, fn) {
+  console.log(`Original String ${str}`);
+  console.log(`Transformed String: ${fn(str)}`);
+  console.log(`Transformed by: ${fn.name}`);
+};
+
+// just passing in the function value
+transformer(`JavaScript is the best!`, upperFirstWord);
+transformer(`JavaScript is the best`, oneWord);
+
+const high5 = function () {
+  console.log(`👋🏽`);
+};
+
+// .addEventListener is the higher order function
+// JavaScript uses callback functions all the time
+// Makes it easier to split up our code into more reusable parts
+// Callback Functiins allow us to create abstraction
+// Abstraction is hiding details of code implementation because we don't care about the details
+// Allows us to thing of the code in a more detailed way
+document.body.addEventListener(`click`, high5);
+
+[`Jonas`, `Martha`, `Adam`].forEach(high5);
+
+// Example 2:
+// const fire = function () {
+//   console.log(`🔥`);
+// };
+
+// document.body.addEventListener(`click`, fire);
+
+// <----- Functions Returning Functions ----->
