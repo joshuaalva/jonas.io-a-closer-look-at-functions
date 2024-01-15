@@ -135,3 +135,28 @@ greet(`Hello`)(`Mike`);
 const arrowHey = greeting => name => console.log(`${greeting} ${name}`);
 
 // <----- The Call and Apply Methods ----->
+
+const lufthansa = {
+  airline: `Lufthansa`,
+  iataCode: `LH`,
+  bookings: [],
+  // book: function(){}, // Old Syntax
+  book(flightNum, name) {
+    // enhanced object literal with no function
+    console.log(
+      `${name} booked a seat on ${this.airline}, flight ${this.iataCode} ${flightNum} `
+    );
+    this.bookings.push({ flight: `${this.iataCode} ${flightNum}`, name });
+  },
+};
+
+lufthansa.book(239, `Joshua Alvarado`);
+lufthansa.book(635, `John Smith`);
+
+const eurowings = {
+  name: `Eurowings`,
+  iataCode: `EW`,
+  bookings: [],
+};
+
+console.log(lufthansa);
