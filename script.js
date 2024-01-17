@@ -153,7 +153,7 @@ const lufthansa = {
 lufthansa.book(239, `Joshua Alvarado`);
 lufthansa.book(635, `John Smith`);
 
-const eurowings = {
+const euroWings = {
   name: `Eurowings`,
   iataCode: `EW`,
   bookings: [],
@@ -175,8 +175,8 @@ const book = lufthansa.book;
 // manually and explicitly
 
 // Call Method
-book.call(eurowings, 23, `Sarah Williams`);
-console.log(eurowings);
+book.call(euroWings, 23, `Sarah Williams`);
+console.log(euroWings);
 
 book.call(lufthansa, `239`, `Joshua Alvarado`);
 console.log(lufthansa);
@@ -188,12 +188,12 @@ const swiss = {
 };
 
 book.call(swiss, 583, `Mary Cooper`);
-console.log(swiss);
+// console.log(swiss);
 
 // Apply Method
 const flightData = [583, `George Cooper`];
 book.apply(swiss, flightData);
-console.log(swiss);
+// console.log(swiss);
 
 book.call(swiss, ...flightData);
 
@@ -201,3 +201,24 @@ book.call(swiss, ...flightData);
 // https://www.youtube.com/watch?v=rZc7_2YXbP8
 
 // <----- The Bind Method ----->
+// Bind does not immediatley call the function
+// It create an entirely new function
+// book.call(eurowings, 23, `Sarah Williams`);
+
+// will not call book function
+// will return a new function where the this keyword is always eurowings
+// no longer need to specify this keyword
+
+const bookEurowings = book.bind(euroWings);
+const bookSwiss = book.bind(swiss);
+const bookLufthansa = book.bind(lufthansa);
+bookSwiss(690, `Joshua Alvarado`);
+bookLufthansa(999, `Carlos Alvarado`);
+// eurowings not pointing towards the function !!!!!! fix later
+// Airline part undefined
+// Sarah Williams booked a seat on undefined, flight EW 23
+bookEurowings(23, `Sarah Williams`);
+
+// continued ...
+console.log(`<-- trouble shooting below -->`);
+book.call(euroWings, 23, `Sarah Williams`);
