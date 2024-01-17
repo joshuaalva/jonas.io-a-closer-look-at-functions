@@ -160,3 +160,44 @@ const eurowings = {
 };
 
 console.log(lufthansa);
+
+const book = lufthansa.book;
+
+// book function no longer the book method
+// now a function
+// so being a function call this keyword doesn't work
+// makes this undefined using just book()
+// does not work
+// book(23, `Sarah Williams`);
+// call, apply, and bind could fix this issue
+
+// this keyword set to eurowings
+// manually and explicitly
+
+// Call Method
+book.call(eurowings, 23, `Sarah Williams`);
+console.log(eurowings);
+
+book.call(lufthansa, `239`, `Joshua Alvarado`);
+console.log(lufthansa);
+
+const swiss = {
+  airline: `Swiss Airlines`,
+  iataCode: `LX`,
+  bookings: [],
+};
+
+book.call(swiss, 583, `Mary Cooper`);
+console.log(swiss);
+
+// Apply Method
+const flightData = [583, `George Cooper`];
+book.apply(swiss, flightData);
+console.log(swiss);
+
+book.call(swiss, ...flightData);
+
+// call , apply, bind methods
+// https://www.youtube.com/watch?v=rZc7_2YXbP8
+
+// <----- The Bind Method ----->
