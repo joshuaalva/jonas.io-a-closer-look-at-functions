@@ -153,8 +153,8 @@ const lufthansa = {
 lufthansa.book(239, `Joshua Alvarado`);
 lufthansa.book(635, `John Smith`);
 
-const euroWings = {
-  name: `Eurowings`,
+const eurowings = {
+  airline: `Eurowings`,
   iataCode: `EW`,
   bookings: [],
 };
@@ -175,8 +175,8 @@ const book = lufthansa.book;
 // manually and explicitly
 
 // Call Method
-book.call(euroWings, 23, `Sarah Williams`);
-console.log(euroWings);
+book.call(eurowings, 23, `Sarah Williams`);
+console.log(eurowings);
 
 book.call(lufthansa, `239`, `Joshua Alvarado`);
 console.log(lufthansa);
@@ -209,7 +209,7 @@ book.call(swiss, ...flightData);
 // will return a new function where the this keyword is always eurowings
 // no longer need to specify this keyword
 
-const bookEurowings = book.bind(euroWings);
+const bookEurowings = book.bind(eurowings);
 const bookSwiss = book.bind(swiss);
 const bookLufthansa = book.bind(lufthansa);
 bookSwiss(690, `Joshua Alvarado`);
@@ -221,4 +221,4 @@ bookEurowings(23, `Sarah Williams`);
 
 // continued ...
 console.log(`<-- trouble shooting below -->`);
-book.call(euroWings, 23, `Sarah Williams`);
+book.call(eurowings, 23, `Sarah Williams`);
