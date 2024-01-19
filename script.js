@@ -94,9 +94,9 @@ const transformer = function (str, fn) {
 transformer(`JavaScript is the best!`, upperFirstWord);
 transformer(`JavaScript is the best`, oneWord);
 
-const high5 = function () {
-  console.log(`👋🏽`);
-};
+// const high5 = function () {
+//   console.log(`👋🏽`);
+// };
 
 // .addEventListener is the higher order function
 // JavaScript uses callback functions all the time
@@ -104,9 +104,9 @@ const high5 = function () {
 // Callback Functiins allow us to create abstraction
 // Abstraction is hiding details of code implementation because we don't care about the details
 // Allows us to thing of the code in a more detailed way
-document.body.addEventListener(`click`, high5);
+// document.body.addEventListener(`click`, high5);
 
-[`Jonas`, `Martha`, `Adam`].forEach(high5);
+// [`Jonas`, `Martha`, `Adam`].forEach(high5);
 
 // Example 2:
 // const fire = function () {
@@ -219,6 +219,42 @@ bookLufthansa(999, `Carlos Alvarado`);
 // Sarah Williams booked a seat on undefined, flight EW 23
 bookEurowings(23, `Sarah Williams`);
 
-// continued ...
-console.log(`<-- trouble shooting below -->`);
-book.call(eurowings, 23, `Sarah Williams`);
+// when we use object together with event listeners
+// with event listeners
+
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  console.log(this);
+  this.planes++;
+  console.log(this.planes);
+  // add a new plane whenever the button is clicked on
+};
+
+document
+  .querySelector(`.buy`)
+  .addEventListener(`click`, lufthansa.buyPlane.bind(lufthansa));
+
+// Partial Application
+// means we can preset parameters
+
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
+
+const addVAT = addTax.bind(null, 0.23);
+// addVAT = value => value + value * 0.23
+
+console.log(addVAT(123));
+console.log(addVAT(100));
+
+// go back to grid function lecture and use that to write a function that writes a function
+
+const addTaxRate = function (rate) {
+  return function (value) {
+    return value + value * rate;
+  };
+};
+
+const addVAT2 = addTaxRate(0.23);
+console.log(addVAT2(100));
+
+// Coding Challenge #1
