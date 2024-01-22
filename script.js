@@ -272,10 +272,18 @@ const poll = {
     // console.log(answer);
     // Register answer
     typeof answer === `number` &&
-      answer < this.answers.length && ..
+      answer < this.answers.length &&
       this.answers[answer]++;
     console.log(this.answers);
   },
+
+  displayResults(type = `array`) {
+    if(type === `array`){
+      console.log(this.answers);
+    } else if (type === `string`){
+      console.log(${});
+    }
+  }
 };
 
 // poll.registerNewAnswer();
