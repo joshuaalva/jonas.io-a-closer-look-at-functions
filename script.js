@@ -274,16 +274,17 @@ const poll = {
     typeof answer === `number` &&
       answer < this.answers.length &&
       this.answers[answer]++;
-    console.log(this.answers);
+    this.displayResults();
+    this.displayResults(`string`);
   },
 
   displayResults(type = `array`) {
-    if(type === `array`){
+    if (type === `array`) {
       console.log(this.answers);
-    } else if (type === `string`){
-      console.log(${});
+    } else if (type === `string`) {
+      console.log(`Poll results are ${(this.answers, join(`, `))}`);
     }
-  }
+  },
 };
 
 // poll.registerNewAnswer();
