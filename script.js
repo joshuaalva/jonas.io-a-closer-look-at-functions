@@ -282,7 +282,7 @@ const poll = {
     if (type === `array`) {
       console.log(this.answers);
     } else if (type === `string`) {
-      console.log(`Poll results are ${(this.answers, join(`, `))}`);
+      console.log(`Poll results are ${this.answers.join(`, `)}`);
     }
   },
 };
