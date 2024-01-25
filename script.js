@@ -292,4 +292,11 @@ document
   .querySelector(`.poll`)
   .addEventListener(`click`, poll.registerNewAnswer.bind(poll));
 
+// [5, 2, 3]
+// [1, 5, 3, 9, 6, 1]
+
+// different this keyword uses call()
+// object that contains the answers property
+poll.displayResults.call({ answers: [5, 2, 3] }, `string`);
+
 // <--- Immediatley Invoked Function Expression --->
