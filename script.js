@@ -300,3 +300,25 @@ document
 poll.displayResults.call({ answers: [5, 2, 3] }, `string`);
 
 // <--- Immediatley Invoked Function Expression --->
+
+// you can run runOnce later on in the code no problem
+// nothing is stopping you
+const runOnce = function () {
+  console.log(`This will never run again`);
+};
+
+runOnce();
+
+// write the function expression do not name it >> will throw an error
+// wrap it in parenthese() and call it immediatley ();
+// no error and it will run but you cannot call it again
+//IIFE
+(function () {
+  console.log(`This will never run again`);
+})();
+//IIFE Arrow Function
+(() => console.log(`This will never run again`))();
+// all data inside of a scope is private // or encapsulated
+// variables created with let or const they have their own scope // create a block
+
+// <--- Closures --->
