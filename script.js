@@ -322,3 +322,16 @@ runOnce();
 // variables created with let or const they have their own scope // create a block
 
 // <--- Closures --->
+
+// closure is not something that we explicitly use
+// it happens automatically... we just need to recognize those situations
+const secureBooking = function () {
+  let passnegerCount = 0;
+
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  };
+};
+
+const booker = secureBooking();
