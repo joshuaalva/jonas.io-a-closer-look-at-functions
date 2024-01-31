@@ -326,7 +326,7 @@ runOnce();
 // closure is not something that we explicitly use
 // it happens automatically... we just need to recognize those situations
 const secureBooking = function () {
-  let passnegerCount = 0;
+  let passengerCount = 0;
 
   return function () {
     passengerCount++;
@@ -335,3 +335,7 @@ const secureBooking = function () {
 };
 
 const booker = secureBooking();
+
+booker();
+booker();
+booker();
