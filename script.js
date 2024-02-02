@@ -339,3 +339,5 @@ const booker = secureBooking();
 booker();
 booker();
 booker();
+
+// closure makes a function remember all the variables that existed at the functions birth place
