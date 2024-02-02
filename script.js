@@ -397,4 +397,17 @@ const perGroup = 1000; // closures have priorities in the scope
 
 boardPassengers(180, 3);
 
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
+
 // <--- Coding Challenge #2 --->
+// take the iife below and at the end of of the function add an event listening that changes the color of select element to blue each time the body element is clicked. do not select the h1 element again
+// iife = immediatley invoked function expression
+
+(function () {
+  const header = document.querySelector('h1');
+  header.style.color = 'red';
+
+  document.querySelector(`body`).addEventListener(`click`, function () {
+    header.style.color = `blue`;
+  });
+})();
