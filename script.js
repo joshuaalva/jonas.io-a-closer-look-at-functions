@@ -341,3 +341,60 @@ booker();
 booker();
 
 // closure makes a function remember all the variables that existed at the functions birth place
+// closures have priority of scope chain
+
+//closure summary
+// a closure is the closed-over variable environment of the execution context in which a function was created, even after that execution context is gone.
+// a closure gives a function access to all the variables of its parent function, even after that parent function has returned. The function keeps a reference to its outer scope, which preserves the scope chain throughout time.
+// a closure makes sure that a function doesn't lose connection to variables that existed at the functions birth place.
+// we do not have to explicitly set a closure... they are not an object that we can access, cannot take variables from it
+// internal property of a function
+
+// !! a closure is like a backpack that a function carries around wherever it goes. This backpack has all the variables that were present in the environment where the function was created.
+
+console.dir(booker);
+
+// brackets is an internal property that we can not access in our code after console.dir ex: [[scopes]]
+
+// <--- More Closure Examples -->
+
+// Example 1
+let f;
+const g = function () {
+  const a = 23;
+  f = function () {
+    console.log(a * 2);
+  };
+};
+
+const h = function () {
+  const b = 777;
+  f = function () {
+    console.log(b * 2);
+  };
+};
+
+g();
+f(); //46
+// re-assinging f function
+h();
+f(); //1554
+
+// Example 2
+const boardPassengers = function (n, wait) {
+  const perGroup = n / 3;
+
+  // timer
+  setTimeout(function () {
+    console.log(`we are now boarding all ${n} passengers`);
+    console.log(`There are 3 groups, each with ${perGroup} passengers`);
+  }, wait * 1000);
+
+  console.log(`Will start boarding in ${wait} seconds`);
+};
+
+const perGroup = 1000; // closures have priorities in the scope
+
+boardPassengers(180, 3);
+
+// <--- Coding Challenge #2 --->
